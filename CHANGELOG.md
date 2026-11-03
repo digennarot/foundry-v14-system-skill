@@ -3,6 +3,13 @@
 Versions follow [semantic versioning](https://semver.org/): patch for fixes, minor for new content, major for a new Foundry generation or a restructure.
 Each entry records the Foundry build it was verified against.
 
+## 1.2.1 — 2026-11-03
+
+Verified against **Foundry VTT 14.369**. These lessons came from an end-to-end audit that drives a world with Playwright.
+
+- `references/api-lookup.md` (Testing in the running app): launching a world headless with `main.js --world`, and the V14 join page's field names (`userId`, `password`, `join`), rendered client-side.
+- `references/documents.md` (CRUD): batch creation doesn't reliably return documents in the requested order; match them by a field, not by index.
+
 ## 1.2.0 — 2026-11-02
 
 Verified against **Foundry VTT 14.369**. These lessons came from a module that builds multi-level scenes (walls, lights, notes, tiles, regions, teleport passages) from a script.

@@ -54,4 +54,6 @@ Treat it as a reference, not a template: it is far more complex than a typical s
 - The browser console (F12) inside Foundry shows `CONFIG`, `game.system`, `game.actors`, `CONFIG.Actor.dataModels`, and you can run `new Roll("1d20").evaluate()`.
 - `CONFIG.debug.hooks = true` logs every hook call.
 - Restarting the desktop app from a script: after killing the process, wait a few seconds before relaunching. An immediate relaunch can exit silently, because the previous instance still holds the single-instance lock. Then check that port 30000 is listening.
+- Headless server for automated tests: `node <app>/main.js --dataPath=<data> --world=<world id> --port=30000` launches a world without the desktop app. The join page is then ready when `GET /join` answers 200.
+- Driving the join page with Playwright (or any browser automation): the form is rendered client-side, so wait for its options before reading them. The fields are `select[name="userId"]` (camel case, not `userid`), `input[name="password"]` and `button[name="join"]`; after joining, wait for `game.ready === true`.
 - After changing `system.json`, return to Setup and relaunch the world. Changes to `.mjs` need a reload (F5). CSS, HBS and lang files hot-reload when `flags.hotReload` is set.

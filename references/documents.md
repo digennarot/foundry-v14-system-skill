@@ -51,6 +51,8 @@ const doc = await fromUuid("Actor.abc123.Item.def456");                // any do
 const sync = fromUuidSync(uuid);                                       // no compendium fetch
 ```
 
+Batch creation (`createDocuments`, `createEmbeddedDocuments`) does not reliably return the documents in the order of the data you passed: match them back by a field (e.g. `token.actorId`, a name or a flag), never by index.
+
 Operation options (the second argument): `{ render: false, diff: false, recursive: false, noHook: true, pack: "world.x", parent }`, plus any custom keys, which are forwarded to hooks and `_on*` callbacks.
 
 V14 additions: `foundry.documents.modifyBatch([...])` batches writes across several collections, `Document#persisted` tells whether a document is saved, and `Scene#moveTokens` moves several tokens at once.
